@@ -4,7 +4,7 @@
 int LED[8] = {24, 25, 26, 27, 28, 29, 30, 31};
 bool pili_state = false;
 int pili_flash_period = 70;
-int last_millis;
+long last_millis;
 int pili_count = 0;
 bool pili_dir = 0;
 
@@ -17,8 +17,6 @@ void setup() {
     pinMode(LED[i], OUTPUT);
   }
   Serial.begin(9600);
-
-
 }
 
 void loop() {
@@ -30,16 +28,18 @@ void loop() {
     noTone(buzzer);
   }
 
+
   if (!digitalRead(button_on)) {
     pili_state = 1;
     pili_count = -1;
     pili_dir = 0;
     last_millis = millis();
-
   }
   if (!digitalRead(button_off)) {
     pili_state = 0;
   }
+
+
   uint8_t pilis_light;
   if (pili_state) {
     bool LED_change = (millis() - last_millis) > pili_flash_period;
@@ -64,7 +64,5 @@ void loop() {
     for (int i = 0; i < 8; i++) {
       digitalWrite(LED[i], !(0b00000001 & (pilis_light >> i)));
     }
-
   delay(2);
-
 }
