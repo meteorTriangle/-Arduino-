@@ -1,7 +1,7 @@
 {
-    "port": "COM6",
+    "port": "COM11",
     "configuration": "cpu=atmega2560",
     "board": "arduino:avr:mega",
     "programmer": "arduino:avrisp",
-    "sketch": "20220907 -origin\\origin-pili\\origin-pili.ino"
+    "sketch": "20220914\\origin-pili other\\origin-pili-auto-switch.ino"
 }
